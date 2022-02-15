@@ -3,19 +3,23 @@ package com.zorn.startpage.core.website.entity;
 import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zorn.startpage.base.enums.ResultStatus;
+import com.zorn.startpage.core.website.dto.CreateWebsiteDTO;
+import com.zorn.startpage.core.website.dto.UpdateWebsiteDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author wzh
- * @since 2022-02-14 09:17:48
+ * @since 2022-02-15 12:07:22
  */
 @Getter
 @Setter
@@ -25,7 +29,7 @@ public class Website {
     /**
      * website_id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -56,5 +60,17 @@ public class Website {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateAt;
 
+    public static Website create(CreateWebsiteDTO createWebsiteDTO) {
+        Website website = new Website();
+        website.setGroupId(Objects.requireNonNull(createWebsiteDTO.getGroupId(), ResultStatus.PARAM_IS_NULL.getMessage()));
+        website.setUrl(Objects.requireNonNull(createWebsiteDTO.getUrl(), ResultStatus.PARAM_IS_NULL.getMessage()));
+        return website;
+    }
 
+    public static Website update(UpdateWebsiteDTO updateWebsiteDTO) {
+        Website website = new Website();
+        website.setId(Objects.requireNonNull(updateWebsiteDTO.getId(), ResultStatus.PARAM_IS_NULL.getMessage()));
+        website.setUrl(Objects.requireNonNull(updateWebsiteDTO.getUrl(), ResultStatus.PARAM_IS_NULL.getMessage()));
+        return website;
+    }
 }

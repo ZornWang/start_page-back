@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zorn.startpage.base.enums.ResultStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -67,7 +69,7 @@ public class Webgroup {
 
     public static Webgroup createByUserId(Integer userId) {
         Webgroup webgroup = new Webgroup();
-        webgroup.setUserId(userId);
+        webgroup.setUserId(Objects.requireNonNull(userId, ResultStatus.PARAM_IS_NULL.getMessage()));
         return webgroup;
     }
 }

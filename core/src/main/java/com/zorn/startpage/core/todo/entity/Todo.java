@@ -3,8 +3,10 @@ package com.zorn.startpage.core.todo.entity;
 import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zorn.startpage.base.enums.ResultStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -68,22 +70,22 @@ public class Todo {
 
     public static Todo createByUserId(Integer userId,String content) {
         Todo todo = new Todo();
-        todo.setUserId(userId);
+        todo.setUserId(Objects.requireNonNull(userId,ResultStatus.PARAM_IS_NULL.getMessage()));
         todo.setDone(0);
-        todo.setContent(content);
+        todo.setContent(Objects.requireNonNull(content,ResultStatus.PARAM_IS_NULL.getMessage()));
         return todo;
     }
 
     public static Todo done(Integer id) {
         Todo todo = new Todo();
-        todo.setId(id);
+        todo.setId(Objects.requireNonNull(id, ResultStatus.PARAM_IS_NULL.getMessage()));
         todo.setDone(1);
         return todo;
     }
 
     public static Todo reback(Integer id) {
         Todo todo = new Todo();
-        todo.setId(id);
+        todo.setId(Objects.requireNonNull(id, ResultStatus.PARAM_IS_NULL.getMessage()));
         todo.setDone(0);
         return todo;
     }
