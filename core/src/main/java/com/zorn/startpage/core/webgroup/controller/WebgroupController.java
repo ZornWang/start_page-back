@@ -43,9 +43,9 @@ public class WebgroupController {
     }
 
     //    删除组
-    @DeleteMapping
-    public Boolean remove(@RequestBody Webgroup webgroup) {
-        return webgroupService.removeById(webgroup);
+    @DeleteMapping("/{id}")
+    public Boolean remove(@PathVariable("id") Integer groupId) {
+        return webgroupService.removeById(groupId);
     }
 
     //    查询组内所有
