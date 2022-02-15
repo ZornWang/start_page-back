@@ -35,8 +35,8 @@ public class TodoController {
     }
 
     @DeleteMapping
-    public Boolean remove(@RequestBody Todo todo) {
-        return todoService.removeById(todo);
+    public Boolean remove(@RequestParam Integer id) {
+        return todoService.removeById(id);
     }
 
     @PutMapping("/{id}/done")
