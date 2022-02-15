@@ -34,7 +34,7 @@ public class User {
     /**
      * user_id
      */
-    @TableId(type = IdType.ASSIGN_UUID)
+    @TableId(type = IdType.AUTO)
     @NotNull(message = "id不能为空",groups = {edit.class})
     private Integer id;
 
