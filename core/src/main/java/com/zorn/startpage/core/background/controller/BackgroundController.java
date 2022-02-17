@@ -2,6 +2,7 @@ package com.zorn.startpage.core.background.controller;
 
 import com.zorn.startpage.auth.user.entity.User;
 import com.zorn.startpage.base.utils.WrapperUtils;
+import com.zorn.startpage.core.background.dto.CreateBackgroundDTO;
 import com.zorn.startpage.core.background.entity.Background;
 import com.zorn.startpage.core.background.service.BackgroundService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class BackgroundController {
     }
 
     @PostMapping
-    public Boolean create(@RequestParam String url, @ModelAttribute("user") User user) {
-        return backgroundService.save(new Background(url, user.getId()));
+    public Boolean create(@RequestBody CreateBackgroundDTO createBackgroundDTO, @ModelAttribute("user") User user) {
+        return backgroundService.save(new Background(createBackgroundDTO.getUrl(), user.getId()));
     }
 
     @PutMapping

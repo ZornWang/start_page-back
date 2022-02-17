@@ -89,4 +89,11 @@ public class Todo {
         todo.setDone(0);
         return todo;
     }
+
+    public static Todo update(Integer id, String content) {
+        Todo todo = new Todo();
+        todo.setId(Objects.requireNonNull(id, ResultStatus.PARAM_IS_NULL.getMessage()));
+        todo.setContent(Objects.requireNonNull(content,ResultStatus.PARAM_IS_NULL.getMessage()));
+        return todo;
+    }
 }

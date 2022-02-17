@@ -32,7 +32,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(ExpiredJwtException.class)
     public Result<String> ExpiredJwtException(ExpiredJwtException e) {
         log.error("全局异常信息 ex={}", e.getMessage(), e);
-        return Result.error(ResultStatus.TOKEN_NOT_PROVIDE.getMessage(), ResultStatus.TOKEN_NOT_PROVIDE.getCode());
+        return Result.error(ResultStatus.REFRESH_TOKEN_IS_EXPIRED.getMessage(), ResultStatus.REFRESH_TOKEN_IS_EXPIRED.getCode());
     }
 
     /**
