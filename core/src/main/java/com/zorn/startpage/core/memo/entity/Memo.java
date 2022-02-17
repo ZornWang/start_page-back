@@ -10,8 +10,7 @@ import com.zorn.startpage.auth.user.entity.User;
 import com.zorn.startpage.base.enums.ResultStatus;
 import com.zorn.startpage.core.memo.dto.CreateMemoDTO;
 import com.zorn.startpage.core.memo.dto.UpdateMemoDTO;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,8 +21,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author wzh
  * @since 2022-02-17 12:42:26
  */
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("memo")
 public class Memo {
 

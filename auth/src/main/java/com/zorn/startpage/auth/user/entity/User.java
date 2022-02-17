@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zorn.startpage.auth.user.dto.UpdateUserDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -19,6 +21,8 @@ import java.util.Date;
  * @since 2022-02-14 04:26:42
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("user")
 public class User {
 
@@ -95,15 +99,6 @@ public class User {
     public User(String username, String password, String phone) {
         this.username = username;
         this.password = password;
-        this.phone = phone;
-    }
-
-    public User(Integer id, String username, String password, String avatarUrl, String signature, String phone) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.avatarUrl = avatarUrl;
-        this.signature = signature;
         this.phone = phone;
     }
 
