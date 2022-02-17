@@ -2,6 +2,7 @@ package com.zorn.startpage.core.memo.controller;
 
 
 import com.zorn.startpage.auth.user.entity.User;
+import com.zorn.startpage.base.dto.PageinateDto;
 import com.zorn.startpage.base.utils.WrapperUtils;
 import com.zorn.startpage.core.memo.dto.CreateMemoDTO;
 import com.zorn.startpage.core.memo.dto.UpdateMemoDTO;
@@ -27,8 +28,8 @@ public class MemoController {
     private MemoService memoService;
 
     @GetMapping
-    public List<Memo> findAll(@ModelAttribute("user") User user) {
-        return memoService.list(WrapperUtils.getQueryWrapper("user_id", user.getId()));
+    public Object findAll(@ModelAttribute("user") User user, PageinateDto pageinateDto) {
+        return memoService.findAll(user, pageinateDto);
     }
 
     @PostMapping
