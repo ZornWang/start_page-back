@@ -159,12 +159,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public String uploadAvatar(String username, MultipartFile file) {
+        if (file.getOriginalFilename().equals("")) {
+            throw new NullPointerException(ResultStatus.FILE_IS_NULL.getMessage());
+        }
         String fileName = username + "_avatar_" + System.currentTimeMillis();
         return txUtil.uploadfile(Objects.requireNonNull(file, ResultStatus.FILE_IS_NULL.getMessage()), COSUrl.USERAVATAR.getUrl(), fileName);
-    }
-
-    @Override
-    public void updateUser(UpdateUserDTO updateUserDTO) {
-
     }
 }

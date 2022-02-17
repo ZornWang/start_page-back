@@ -30,6 +30,4 @@ public interface UserService extends IService<User> {
     Boolean getForgetCode(String phone) throws TencentCloudSDKException;
 
     String uploadAvatar(String username, MultipartFile file);
-
-    void updateUser(UpdateUserDTO updateUserDTO);
 }

@@ -51,7 +51,7 @@ public class BackgroundController {
     }
 
     @PostMapping("/upload")
-    public String upload(MultipartFile file, @ModelAttribute("user") User user) {
+    public String upload(@RequestParam MultipartFile file, @ModelAttribute("user") User user) {
         return backgroundService.uploadBackground(user.getUsername(), file);
     }
 }

@@ -29,6 +29,9 @@ public class BackgroundServiceImpl extends ServiceImpl<BackgroundMapper, Backgro
 
     @Override
     public String uploadBackground(String username, MultipartFile file) {
+        if (file.getOriginalFilename().equals("")) {
+            throw new NullPointerException(ResultStatus.FILE_IS_NULL.getMessage());
+        }
         String fileName = username + "_background_" + System.currentTimeMillis();
         return txUtil.uploadfile(Objects.requireNonNull(file, ResultStatus.FILE_IS_NULL.getMessage()), COSUrl.USERBACKGROUND.getUrl(), fileName);
     }

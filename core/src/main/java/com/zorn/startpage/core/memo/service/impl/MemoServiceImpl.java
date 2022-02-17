@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author wzh
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class MemoServiceImpl extends ServiceImpl<MemoMapper, Memo> implements MemoService {
     @Override
     public Object findAll(User user, PageinateDto pageinateDto) {
-        if (pageinateDto.getCurrent() == null) {
+        if (pageinateDto.getCurrent() == null || pageinateDto.getSize() == null) {
             return list(WrapperUtils.getQueryWrapper("user_id", user.getId()));
         } else {
             Page<Memo> memoPage = page(new Page<>(pageinateDto.getCurrent(), pageinateDto.getSize()), WrapperUtils.getQueryWrapper("user_id", user.getId()));
