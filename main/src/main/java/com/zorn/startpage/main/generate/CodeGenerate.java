@@ -27,7 +27,7 @@ public class CodeGenerate {
 
     private static final String DB_PWD = "zorn0501";
 
-    private static final String MODULE_NAME = "website";
+    private static final String MODULE_NAME = "memo";
 
     public static void main(String[] args) {
 

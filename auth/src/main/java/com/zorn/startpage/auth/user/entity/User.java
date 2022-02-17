@@ -1,14 +1,14 @@
 package com.zorn.startpage.auth.user.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zorn.startpage.auth.user.dto.UpdateUserDTO;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * <p>
@@ -70,6 +70,22 @@ public class User {
      */
     @TableField("phone")
     private String phone;
+
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @TableField(fill = FieldFill.INSERT)
+    private Date createAt;
+
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateAt;
 
     public User(Integer id, String username) {
         this.id = id;
